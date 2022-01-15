@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "TMLX/TLf9fRCsrk4PhvVtpF5l+o9ARNi8NMBKtT0oXKfhhBqtMcDGlr1L0oTEuPJ/MLSP6+ZVfP2fpucwOPN4A==",
+  "dgSpecHash": "8RzjVz4RnHNF8W52eb0za7XCWRn3MgeAsU09dBLOnpW1eKIwKL1viBfAOL5/5F5c/eYv04wrZqcMJimFXqPhgA==",
   "success": true,
   "projectFilePath": "C:\\Users\\AngelCanales\\source\\repos\\ReceiptRental\\ReceiptRental\\ReceiptRental.csproj",
   "expectedPackageFiles": [
@@ -39,6 +39,7 @@
     "C:\\Users\\AngelCanales\\.nuget\\packages\\sqlitepclraw.core\\2.0.2\\sqlitepclraw.core.2.0.2.nupkg.sha512",
     "C:\\Users\\AngelCanales\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3\\2.0.2\\sqlitepclraw.lib.e_sqlite3.2.0.2.nupkg.sha512",
     "C:\\Users\\AngelCanales\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.0.2\\sqlitepclraw.provider.e_sqlite3.2.0.2.nupkg.sha512",
+    "C:\\Users\\AngelCanales\\.nuget\\packages\\stylecop.analyzers\\1.1.118\\stylecop.analyzers.1.1.118.nupkg.sha512",
     "C:\\Users\\AngelCanales\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\AngelCanales\\.nuget\\packages\\system.collections.immutable\\1.7.1\\system.collections.immutable.1.7.1.nupkg.sha512",
     "C:\\Users\\AngelCanales\\.nuget\\packages\\system.componentmodel.annotations\\4.7.0\\system.componentmodel.annotations.4.7.0.nupkg.sha512",

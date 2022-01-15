@@ -1,17 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-
-namespace ReceiptRental.Database.Repositories
+﻿namespace ReceiptRental.Database.Repositories
 {
+    using System;
+    using System.Linq;
+    using System.Linq.Expressions;
+    using System.Threading;
+    using System.Threading.Tasks;
+    using Microsoft.EntityFrameworkCore;
+
     public class RepositoryBase<TEntity, TContext> : IRepository<TEntity>
-      where TEntity : class
-      where TContext : DbContext
+         where TEntity : class
+         where TContext : DbContext
     {
         public RepositoryBase(TContext context)
         {
@@ -139,14 +137,10 @@ namespace ReceiptRental.Database.Repositories
         /// </returns>
         public virtual TEntity Update(TEntity entity)
         {
-            var entry = this.Context.Update(entity);
+            var entry = this.Context.Entry(entity);
             entry.State = EntityState.Modified;
             return entity;
         }
-
-       
-
-
 
         /// <summary>
         /// Marks the entity as deleted.
@@ -159,7 +153,7 @@ namespace ReceiptRental.Database.Repositories
         /// </returns>
         public virtual TEntity Delete(TEntity entity)
         {
-            var entry = this.Context.Remove(entity);
+            var entry = this.Context.Entry(entity);
             entry.State = EntityState.Deleted;
             return entity;
         }

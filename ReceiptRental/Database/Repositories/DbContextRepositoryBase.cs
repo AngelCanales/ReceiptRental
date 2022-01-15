@@ -1,13 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
+﻿// <copyright file="DbContextRepositoryBase.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace ReceiptRental.Database.Repositories
 {
-    public abstract class DbContextRepositoryBase<TEntity> : RepositoryBase<TEntity, PVCBContext>
-       where TEntity : class
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    public class DbContextRepositoryBase<TEntity> : RepositoryBase<TEntity, ReceiptRentalContext>
+         where TEntity : class
     {
-        public DbContextRepositoryBase(PVCBContext context)
+        public DbContextRepositoryBase(ReceiptRentalContext context)
             : base(context)
         {
             this.Context = context;

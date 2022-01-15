@@ -1,29 +1,25 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using ReceiptRental.Services;
-using ReceiptRental.Views;
-using Prism.DryIoc;
-using System.Globalization;
-using Prism;
-using Prism.Ioc;
-using ReceiptRental.ViewModels;
-using System.Threading;
-using ReceiptRental.Resource;
-using ReceiptRental.Database;
-using ReceiptRental.PVCBCore.Invoices;
-using ReceiptRental.Database.Repositories;
-using Prism.Navigation;
-using ReceiptRental.Models;
-using ReceiptRental.PVCBCore.Products;
-using ReceiptRental.PVCBCore.Parameters;
-using ReceiptRental.PVCBCore.Inventories;
-using Microsoft.EntityFrameworkCore;
-using ReceiptRental.PVCBCore.Providers;
-using ReceiptRental.PVCBCore.Customers;
+﻿// <copyright file="App.xaml.cs" company="PlaceholderCompany">
+// Copyright (c) PlaceholderCompany. All rights reserved.
+// </copyright>
 
 namespace ReceiptRental
 {
+    using System;
+    using System.Globalization;
+    using System.Threading;
+    using Prism;
+    using Prism.DryIoc;
+    using Prism.Ioc;
+    using Prism.Navigation;
+    using ReceiptRental.Database;
+    using ReceiptRental.Database.Models;
+    using ReceiptRental.Database.Repositories;
+    using ReceiptRental.ReceiptRentalCore.Alkylinos;
+    using ReceiptRental.Resource;
+    using ReceiptRental.ViewModels;
+    using ReceiptRental.Views;
+    using Xamarin.Forms;
+
     public partial class App : PrismApplication
     {
 
@@ -51,22 +47,17 @@ namespace ReceiptRental
             Thread.CurrentThread.CurrentUICulture = new CultureInfo(myCurrency.IetfLanguageTag);
             ResourceGlobal.Culture = new CultureInfo(myCurrency.IetfLanguageTag);
 
-           
-           
-                try
-                {
+            try
+            {
                 if (!DesignMode.IsDesignModeEnabled)
                 {
-                    var context = new PVCBContext();
+                    var context = new ReceiptRentalContext();
                     await ReceiptRental.ReceiptRentalSeedData.ReceiptRentalSeedData.EnsureReceiptRentalSeedData(context);
                 }
             }
-                catch (Exception )
-                {
-                }
-           
-
-         
+            catch (Exception)
+            {
+            }
 
             var param = new NavigationParameters();
             param.Add("NameFile", "dataCashBack.json");
@@ -75,7 +66,7 @@ namespace ReceiptRental
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
-            
+
             containerRegistry.RegisterForNavigation<NavigationPage>();
             containerRegistry.RegisterForNavigation<Views.MasterDetailPage, MasterDetailPageViewModel>();
             containerRegistry.RegisterForNavigation<SalesPage, SalesViewModel>();
@@ -85,7 +76,7 @@ namespace ReceiptRental
             containerRegistry.RegisterForNavigation<TransactionDetailsPage, TransactionDetailsPageViewModel>();
             containerRegistry.RegisterForNavigation<MonthlyReportPage, MonthlyReportViewModel>();
             containerRegistry.RegisterForNavigation<AnnualReportPage, AnnualReportPageViewModel>();
-            containerRegistry.RegisterForNavigation<ListProductsPage,ListProductsPageViewModel>();
+            containerRegistry.RegisterForNavigation<ListProductsPage, ListProductsPageViewModel>();
             containerRegistry.RegisterForNavigation<AddProductPage, AddProductPageViewModel>();
             containerRegistry.RegisterForNavigation<ListProductsDetailPage, ListProductsDetailPageViewModel>();
             containerRegistry.RegisterForNavigation<SearchProductPage, SearchProductPageViewModel>();
@@ -107,32 +98,14 @@ namespace ReceiptRental
             containerRegistry.RegisterForNavigation<SearchCustomerPage, SearchCustomerPageViewModel>();
 
             // Data access
-            containerRegistry.RegisterSingleton<IRepository<Database.Models.Invoices>, InvoicesRepository>();
-            containerRegistry.RegisterSingleton<IRepository<Database.Models.DetailInvoices>, DetailInvoicesRepository>();
-            containerRegistry.RegisterSingleton<IRepository<Database.Models.Products>, ProductRepository>();
-            containerRegistry.RegisterSingleton<IRepository<Database.Models.Parameters>, ParametersRepository>();
+            containerRegistry.RegisterSingleton<IRepository<PaymentTypes>, DbContextRepositoryBase<PaymentTypes>>();
 
-            containerRegistry.RegisterSingleton<IRepository<Database.Models.Providers>, ProvidersRepository>();
-            containerRegistry.RegisterSingleton<IRepository<Database.Models.Customers>, CustomersRepository>();
-            containerRegistry.RegisterSingleton<IRepository<Database.Models.PaymentTypes>, PaymentTypesRepository>();
-            containerRegistry.RegisterSingleton<IRepository<Database.Models.SalesTypes>, SalesTypesRepository>();
-            containerRegistry.RegisterSingleton<IRepository<Database.Models.Routes>, RoutesRepository>();
-            containerRegistry.RegisterSingleton<IRepository<Database.Models.Employees>, EmployeesRepository>(); 
-            containerRegistry.RegisterSingleton<IRepository<Database.Models.Inventories>, InventoriesRepository>();
-
-            containerRegistry.RegisterSingleton<IInvoicesManager, InvoicesManager>();
-            containerRegistry.RegisterSingleton<IProductsManager, ProductsManager>();
-            containerRegistry.RegisterSingleton<IParametersManager, ParametersManager>();
-            containerRegistry.RegisterSingleton<IInventoriesManager, InventoriesManager>();
-
-            containerRegistry.RegisterSingleton<IProvidersManager, ProvidersManager>();
-            containerRegistry.RegisterSingleton<ICustomersManager, CustomersManager>();
-
+            containerRegistry.RegisterSingleton<IAlkylinoManager, AlkylinoManager>();
 
             containerRegistry.RegisterSingleton<PrintInvoice.PrintInvoice>();
-            containerRegistry.RegisterSingleton<PVCBContext>();
+            containerRegistry.RegisterSingleton<ReceiptRentalContext>();
             containerRegistry.RegisterSingleton<ReceiptRental.ReceiptRentalSeedData.ReceiptRentalSeedData>();
-            
+
 
 
         }

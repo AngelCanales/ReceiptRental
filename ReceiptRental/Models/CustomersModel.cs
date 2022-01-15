@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ReceiptRental.Models
 {
-   public class CustomersModel
+   public class alkylinoModel
     {
         public int Id { get; set; }
 
