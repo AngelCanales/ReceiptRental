@@ -93,3 +93,4 @@ C:\Users\AngelCanales\source\repos\ReceiptRental\ReceiptRental\obj\Release\netst
 C:\Users\AngelCanales\source\repos\ReceiptRental\ReceiptRental\obj\Release\netstandard2.0\ReceiptRental.dll
 C:\Users\AngelCanales\source\repos\ReceiptRental\ReceiptRental\obj\Release\netstandard2.0\ref\ReceiptRental.dll
 C:\Users\AngelCanales\source\repos\ReceiptRental\ReceiptRental\obj\Release\netstandard2.0\ReceiptRental.pdb
+C:\Users\AngelCanales\source\repos\ReceiptRental\ReceiptRental\obj\Release\netstandard2.0\ReceiptRental.csproj.AssemblyReference.cache

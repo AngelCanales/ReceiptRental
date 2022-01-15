@@ -33,6 +33,7 @@
             context.Add(new PaymentTypes { Code = "10", Description = "Mensual" });
             context.Add(new PaymentTypes { Code = "10", Description = "Quincenal" });
             context.Add(new Owner { IdCard = "0512199100330", Name = "Maria Argentina Guardado Trochez" });
+            context.Add(new Templates { Template = "0512199100330", Name = "TemplateReceipt" });
             await context.SaveChangesAsync();
         }
     }

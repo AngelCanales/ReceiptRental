@@ -15,6 +15,11 @@ namespace ReceiptRental
     using ReceiptRental.Database.Models;
     using ReceiptRental.Database.Repositories;
     using ReceiptRental.ReceiptRentalCore.Alkylinos;
+    using ReceiptRental.ReceiptRentalCore.Apartments;
+    using ReceiptRental.ReceiptRentalCore.Owner;
+    using ReceiptRental.ReceiptRentalCore.PaymentTypes;
+    using ReceiptRental.ReceiptRentalCore.Receipt;
+    using ReceiptRental.ReceiptRentalCore.Templates;
     using ReceiptRental.Resource;
     using ReceiptRental.ViewModels;
     using ReceiptRental.Views;
@@ -104,6 +109,11 @@ namespace ReceiptRental
             containerRegistry.RegisterSingleton<IRepository<Receipt>, DbContextRepositoryBase<Receipt>>();
 
             containerRegistry.RegisterSingleton<IAlkylinoManager, AlkylinoManager>();
+            containerRegistry.RegisterSingleton<IApartmentsManager, ApartmentsManager>();
+            containerRegistry.RegisterSingleton<IOwnerManager, OwnerManager>();
+            containerRegistry.RegisterSingleton<IReceiptManager, ReceiptManager>();
+            containerRegistry.RegisterSingleton<ITemplatesManager, TemplatesManager>();
+            containerRegistry.RegisterSingleton<IPaymentTypesManagers, PaymentTypesManager>();
 
             containerRegistry.RegisterSingleton<PrintInvoice.PrintInvoice>();
             containerRegistry.RegisterSingleton<ReceiptRentalContext>();
