@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<prism:PrismApplication xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:prism="clr-namespace:Prism.DryIoc;assembly=Prism.DryIoc.Forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters ="clr-namespace:ReceiptRental.Converters"
+             x:Class="ReceiptRental.App">
+    <!--
+        Define global resources and styles here, that apply to all pages in your app.
+    -->
+    <Application.Resources>
+        <converters:ItemTappedEventArgsToObjectConverter x:Key="ItemTappedEventArgsToObjectConverter" />
+        <converters:ByteArrayToImageSourceConverter x:Key="ByteArrayToImage" />
+        <ResourceDictionary>
+
+            <OnPlatform x:TypeArguments="x:String"
+                        x:Key="FontAwesomeBrands">
+                <On Platform="Android"
+                    Value="FontAwesome5Brands.otf#Regular" />
+                <On Platform="iOS"
+                    Value="FontAwesome5Brands-Regular" />
+             
+            </OnPlatform>
+
+            <OnPlatform x:TypeArguments="x:String"
+                        x:Key="FontAwesomeSolid">
+                <On Platform="Android"
+                    Value="FontAwesome5Solid.otf#Regular" />
+                <On Platform="iOS"
+                    Value="FontAwesome5Free-Solid" />
+                
+            </OnPlatform>
+
+            <OnPlatform x:TypeArguments="x:String"
+                        x:Key="FontAwesomeRegular">
+                <On Platform="Android"
+                    Value="FontAwesome5Regular.otf#Regular" />
+                <On Platform="iOS"
+                    Value="FontAwesome5Free-Regular" />
+            </OnPlatform>
+            <Color x:Key="Primary">#2196F3</Color>
+            <Style TargetType="Button">
+                <Setter Property="TextColor" Value="White"></Setter>
+                <Setter Property="VisualStateManager.VisualStateGroups">
+                    <VisualStateGroupList>
+                        <VisualStateGroup x:Name="CommonStates">
+                            <VisualState x:Name="Normal">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="{StaticResource Primary}" />
+                                </VisualState.Setters>
+                            </VisualState>
+                            <VisualState x:Name="Disabled">
+                                <VisualState.Setters>
+                                    <Setter Property="BackgroundColor" Value="#332196F3" />
+                                </VisualState.Setters>
+                            </VisualState>
+                        </VisualStateGroup>
+                    </VisualStateGroupList>
+                </Setter>
+            </Style>
+
+            <x:String x:Key="Logo">
+                logo.png
+            </x:String>
+            <Style x:Key="ImageStyle"
+                   TargetType="{x:Type Image}">
+                <Setter Property="Source"
+                           Value="{StaticResource Logo}" />
+
+            </Style>
+
+            <!--Global Styles-->
+            <Color x:Key="NavigationPrimary">#343a40</Color>
+                <Color x:Key="ErrorColor">#ff5252</Color>
+
+                <Color x:Key="Accent">#FFFFFF</Color>
+                <Color x:Key="LightTextColor">#999999</Color>
+
+
+                <x:Double x:Key="BigSize">
+                    16
+                </x:Double>
+                <x:Double x:Key="LittleSize">
+                    12
+                </x:Double>
+                <x:Double x:Key="BiggerSize">
+                    20
+                </x:Double>
+
+
+            <Color x:Key="LabelTextColor">#000000</Color>
+                <Color x:Key="EntryTextColor">#000000</Color>
+                <Color x:Key="DatePikerTextColor">#000000</Color>
+                <Color x:Key="ButtonBackgroundColor">#1f91f3</Color>
+                <Color x:Key="ButtonBorderColor">#1f91f3</Color>
+                <Color x:Key="ButtonTextColor">#FFFFFF</Color>
+
+
+                <x:Double x:Key="LabelFontSize">
+                    14
+                </x:Double>
+                <x:Double x:Key="EntryFontSize">
+                    14
+                </x:Double>
+                <x:Double x:Key="DatePikerFontSize">
+                    14
+                </x:Double>
+                <x:Double x:Key="ButtonFontSize">
+                    18
+                </x:Double>
+
+                <Style x:Key="LabelStyle"
+                   TargetType="{x:Type Label}">
+                    <Setter Property="TextColor"
+                           Value="{StaticResource LabelTextColor}" />
+                    <Setter Property="FontSize"
+                           Value="Medium" />
+                </Style>
+
+                
+
+                <Style x:Key="LabelSummaryStyle"
+                   TargetType="{x:Type Label}">
+                    <Setter Property="TextColor"
+                           Value="Black" />
+                    <Setter Property="FontSize"
+                           Value="Title" />
+                </Style>
+
+            <Style x:Key="LabelInvoiceStyle"
+                   TargetType="{x:Type Label}">
+                <Setter Property="TextColor"
+                           Value="Black" />
+                <Setter Property="FontSize"
+                           Value="Small" />
+            </Style>
+            
+            <Style x:Key="EntryStyle"
+                   TargetType="{x:Type Entry}">
+                    <Setter Property="TextColor"
+                           Value="{StaticResource EntryTextColor}" />
+                    <Setter Property="FontSize"
+                           Value="Medium" />
+                </Style>
+
+                <Style x:Key="ContentPageStyle" TargetType="{x:Type ContentPage}">
+
+                <Setter Property="BackgroundColor" Value="#f8f9fa"/>
+                </Style>
+
+            <Style x:Key="MasterDetailPageStyle" TargetType="{x:Type ContentPage}">
+
+                <Setter Property="BackgroundColor" Value="#343a40"/>
+            </Style>
+            
+            <Style x:Key="DatePikerStyle"
+                   TargetType="{x:Type DatePicker}">
+                    <Setter Property="TextColor"
+                           Value="{StaticResource DatePikerTextColor}" />
+                    <Setter Property="FontSize"
+                           Value="Title" />
+                </Style>
+
+                <Style x:Key="ValidationErrorLabelStyle"
+                   TargetType="{x:Type Label}">
+                    <Setter Property="TextColor"
+                           Value="{StaticResource ErrorColor}" />
+                    <Setter Property="FontSize"
+                           Value="{StaticResource LittleSize}" />
+                </Style>
+
+                <Style TargetType="NavigationPage">
+                    <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
+                <Setter Property="BarTextColor" Value="#fff" />
+                </Style>
+         
+
+
+        </ResourceDictionary>        
+    </Application.Resources>
+</prism:PrismApplication>

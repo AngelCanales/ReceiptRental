@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ReceiptRental.Views.MasterDetailPage"
+             xmlns:behaviors="clr-namespace:ReceiptRental.Behaviors"
+             xmlns:converters="clr-namespace:ReceiptRental.Converters"
+                    xmlns:fontawesome="clr-namespace:FontAwesome"
+             xmlns:pages="clr-namespace:ReceiptRental.Views"
+                  Style="{StaticResource MasterDetailPageStyle}"
+                  Title="{Binding Title}">
+    <MasterDetailPage.Resources>
+        <converters:ItemTappedEventArgsToObjectConverter x:Key="ItemTappedConverter" />
+    </MasterDetailPage.Resources>
+    <MasterDetailPage.Master>
+        <ContentPage Title="Master" Style="{StaticResource MasterDetailPageStyle}">
+            <Grid BackgroundColor="Transparent">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <StackLayout   BackgroundColor="#f8f9fa">
+                    <!--<Label TextColor="Black" Text="ReceiptRental" VerticalOptions="FillAndExpand" VerticalTextAlignment="Center" HorizontalOptions="FillAndExpand" HorizontalTextAlignment="Center" FontAttributes="Bold" FontSize="20"/>-->
+                    <StackLayout HeightRequest="200"  BackgroundColor="{StaticResource Accent}" VerticalOptions="Fill" HorizontalOptions="Fill">
+                        <StackLayout  Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center">
+                          
+                                <Image  Style="{StaticResource ImageStyle}" VerticalOptions="Center"  />
+                           
+                        </StackLayout>
+                    </StackLayout>
+                </StackLayout>
+                <StackLayout  Grid.Row="1">
+                    <ListView HasUnevenRows="True" ItemsSource="{Binding Menu}" SelectionMode="None" >
+                        <ListView.Behaviors>
+                            <behaviors:EventToCommandBehavior EventName="ItemTapped" Command="{Binding NavigateCommand}" Converter="{StaticResource ItemTappedConverter}"/>
+                        </ListView.Behaviors>
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid Padding="10">
+                                        <StackLayout Orientation="Horizontal"  Padding="5">
+                                            <Label Text="{Binding IconValue}"
+                     FontFamily="{StaticResource FontAwesomeSolid}" TextColor="#C2C7D0"
+                       VerticalTextAlignment="Center"
+                       FontSize="25"/>
+                                            <Label TextColor="#C2C7D0" Text="{Binding Name}" FontAttributes="Bold" FontSize="20"/>
+                                            </StackLayout>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </Grid>
+        </ContentPage>
+    </MasterDetailPage.Master>
+</MasterDetailPage>

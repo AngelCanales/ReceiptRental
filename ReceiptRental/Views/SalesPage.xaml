@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:fontawesome="clr-namespace:FontAwesome"
+             xmlns:behaviors="clr-namespace:ReceiptRental.Behaviors"
+              Style="{StaticResource ContentPageStyle}"
+             Title="{Binding Title,Mode=TwoWay}"
+             x:Class="ReceiptRental.Views.SalesPage">
+    <ContentPage.Content>
+        <AbsoluteLayout VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+            <ScrollView>
+                <StackLayout>
+                    <Grid  Padding="10,15,30,0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="0.35*" />
+                            <ColumnDefinition Width="0.45*" />
+                            <ColumnDefinition Width="0.20*" />
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="60" />
+                            <RowDefinition Height="60" />
+                            <RowDefinition Height="60" />
+                            <RowDefinition Height="60" />
+                            <RowDefinition Height="60" />
+                            <RowDefinition Height="60" />
+
+                        <RowDefinition Height="60" />
+                        <RowDefinition Height="60" />
+
+                    </Grid.RowDefinitions>
+
+                        <Label  Margin="0,10,0,10"  Grid.Row="0" Grid.Column="0"   Text="{Binding TypeDecription}" Style="{StaticResource LabelInvoiceStyle}"  FontAttributes="Bold"  HorizontalTextAlignment="End"/>
+                    <StackLayout Spacing="-1" Grid.Row="0"  Grid.Column="1" >
+                        <Entry   Keyboard="Text"      Text="{Binding Description, Mode=TwoWay}" Style="{StaticResource LabelInvoiceStyle}"       FontAttributes="Bold"  HorizontalTextAlignment="Start"/>
+                    </StackLayout>
+                        <StackLayout Padding="0,-10,0,0"
+                             Grid.Row="0" Grid.Column="2" >
+                    <Button 
+                    Text="{x:Static fontawesome:FontAwesomeIcons.Search}"
+                     FontFamily="{StaticResource FontAwesomeSolid}"
+                    TextColor="White"
+                    BackgroundColor="#999999"
+                   WidthRequest      ="60"
+    HeightRequest     ="60"
+    CornerRadius      ="30"
+    VerticalOptions   ="Center"
+    HorizontalOptions ="Center"
+                    Command="{Binding SearchProviderClitenCommand}"
+                    FontSize="30"
+                    Margin="0"
+                    />
+                        </StackLayout>
+
+                        <Label  Margin="0,10,0,10"  Grid.Row="1" Grid.Column="0"   Text="Producto:" Style="{StaticResource LabelInvoiceStyle}"  FontAttributes="Bold"  HorizontalTextAlignment="End"/>
+                    <StackLayout Spacing="-1" Grid.Row="1" Grid.Column="1" >
+                    <Entry  Keyboard="Text"      Text="{Binding NameProduct, Mode=TwoWay}" Style="{StaticResource LabelInvoiceStyle}"       FontAttributes="Bold"  HorizontalTextAlignment="Start"/>
+</StackLayout>
+                        <StackLayout Padding="0,-10,0,0"
+                             Grid.Row="1" Grid.Column="2" >
+                            <Button 
+                    Text="{x:Static fontawesome:FontAwesomeIcons.Search}"
+                     FontFamily="{StaticResource FontAwesomeSolid}"
+                    TextColor="White"
+                    BackgroundColor="#999999"
+                   WidthRequest   ="60"
+    HeightRequest     ="60"
+    CornerRadius      ="30"
+    VerticalOptions   ="Center"
+    HorizontalOptions ="Center"
+                    Command="{Binding SearchProductCommand}"
+                    FontSize="30"
+                    Margin="0"
+                    />
+                        </StackLayout>
+                        <Label  Margin="0,10,0,10"  Grid.Row="2" Grid.Column="0"   Text="Cantidad:" Style="{StaticResource LabelInvoiceStyle}"  FontAttributes="Bold"  HorizontalTextAlignment="End"/>
+                    <StackLayout Spacing="-1" Grid.Row="2" Grid.Column="1">
+                        <Entry   Keyboard="Numeric"      Text="{Binding NumberQuantity, Mode=TwoWay}" Style="{StaticResource LabelInvoiceStyle}"       FontAttributes="Bold"  HorizontalTextAlignment="Start"/>
+                    </StackLayout>
+                    <Label  Margin="0,10,0,10"  Grid.Row="3" Grid.Column="0"   Text="Precio:" Style="{StaticResource LabelInvoiceStyle}"  FontAttributes="Bold"  HorizontalTextAlignment="End"/>
+                    <StackLayout Spacing="-1" Grid.Row="3" Grid.Column="1" >
+                        <Entry   Keyboard="Numeric"      Text="{Binding NumberPrice, Mode=TwoWay}" Style="{StaticResource LabelInvoiceStyle}"       FontAttributes="Bold"  HorizontalTextAlignment="Start">
+                            <Entry.Behaviors>
+                                <behaviors:EventToCommandBehavior EventName="Completed" Command="{Binding AddItemCommand}" />
+                            </Entry.Behaviors>
+                        </Entry>
+                    </StackLayout>
+                        <StackLayout Grid.Row="3" Grid.Column="2" >
+                    <Button
+                             
+                    Text="{x:Static fontawesome:FontAwesomeIcons.Plus}"
+                     FontFamily="{StaticResource FontAwesomeSolid}"
+                    TextColor="White"
+                    BackgroundColor="#28a745"
+                    WidthRequest      ="60"
+    HeightRequest     ="60"
+    CornerRadius      ="30"
+    VerticalOptions   ="Center"
+    HorizontalOptions ="Center"
+                    Command="{Binding AddItemCommand}"
+                    FontSize="30"
+                    Margin="0"
+                    />
+                        </StackLayout>
+
+
+                        <Label  Margin="0,10,0,10"  Grid.Row="4" Grid.Column="0"   Text="Sub Total:" Style="{StaticResource LabelInvoiceStyle}"  FontAttributes="Bold"  HorizontalTextAlignment="End"/>
+                    <Label  Margin="0,10,0,10"  Grid.Row="4" Grid.Column="1"   Text="{Binding TotalItem, Mode=OneWay, StringFormat='{0:c}'}" Style="{StaticResource LabelInvoiceStyle}"       FontAttributes="Bold"  HorizontalTextAlignment="Start"/>
+                   
+                        <Label  Margin="0,10,0,10"  Grid.Row="5" Grid.Column="0"   Text="Total:" FontSize="Title"  FontAttributes="Bold"  HorizontalTextAlignment="End"/>
+                    <Label  Margin="0,10,0,10"  Grid.Row="5" Grid.Column="1"   Text="{Binding Total, Mode=OneWay, StringFormat='{0:c}'}" FontSize="Title"       FontAttributes="Bold"  HorizontalTextAlignment="Start"/>
+
+                    <Label  Margin="0,10,0,10"  Grid.Row="6" Grid.Column="0"   Text="Pago efectivo:" Style="{StaticResource LabelInvoiceStyle}"  FontAttributes="Bold"  HorizontalTextAlignment="End"/>
+                    <StackLayout Spacing="-1" Grid.Row="6" Grid.Column="1" >
+                        <Entry   Keyboard="Numeric"      Text="{Binding NumberCash, Mode=TwoWay}" Style="{StaticResource LabelInvoiceStyle}"       FontAttributes="Bold"  HorizontalTextAlignment="Start"/>
+                    </StackLayout>
+                    <Label  Margin="0,10,0,10"  Grid.Row="7" Grid.Column="0"   Text="Cambio:" FontSize="Title"  FontAttributes="Bold"  HorizontalTextAlignment="End"/>
+                    <Label  Margin="0,10,0,10"  Grid.Row="7" Grid.Column="1"   Text="{Binding Exchange, Mode=OneWay, StringFormat='{0:c}'}" FontSize="Title"       FontAttributes="Bold"  HorizontalTextAlignment="Start"/>
+
+                </Grid>
+               
+
+          
+                    
+                </StackLayout>
+
+            </ScrollView>
+
+            <Frame
+                AbsoluteLayout.LayoutFlags="PositionProportional"
+				AbsoluteLayout.LayoutBounds="1, 1, AutoSize, AutoSize"
+                HasShadow="True"
+                CornerRadius="30"
+                HeightRequest="60"
+                WidthRequest="60"
+                BackgroundColor="White"
+                Padding="0"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"
+                Margin="18">
+
+                <Button
+                    Text="{x:Static fontawesome:FontAwesomeIcons.Save}"
+                    FontFamily="{StaticResource FontAwesomeSolid}"
+                    IsEnabled="{Binding IsError,Mode=TwoWay}"
+                    TextColor="White"
+                    BackgroundColor="#007bff"
+                    CornerRadius="30"
+                    HeightRequest="60"
+                    WidthRequest="60"
+                    Command="{Binding SalvarCommand}"
+                    FontSize="30"
+                    Margin="0"
+                    />
+            </Frame>
+        </AbsoluteLayout>
+
+    </ContentPage.Content>
+</ContentPage>
