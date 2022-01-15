@@ -33,11 +33,9 @@ namespace ReceiptRental
         {
         }
 
-
         protected override async void OnInitialized()
         {
             this.InitializeComponent();
-
 
             var culture = CultureInfo.InstalledUICulture;
 
@@ -99,15 +97,17 @@ namespace ReceiptRental
 
             // Data access
             containerRegistry.RegisterSingleton<IRepository<PaymentTypes>, DbContextRepositoryBase<PaymentTypes>>();
+            containerRegistry.RegisterSingleton<IRepository<Alkylino>, DbContextRepositoryBase<Alkylino>>();
+            containerRegistry.RegisterSingleton<IRepository<Owner>, DbContextRepositoryBase<Owner>>();
+            containerRegistry.RegisterSingleton<IRepository<Apartments>, DbContextRepositoryBase<Apartments>>();
+            containerRegistry.RegisterSingleton<IRepository<Templates>, DbContextRepositoryBase<Templates>>();
+            containerRegistry.RegisterSingleton<IRepository<Receipt>, DbContextRepositoryBase<Receipt>>();
 
             containerRegistry.RegisterSingleton<IAlkylinoManager, AlkylinoManager>();
 
             containerRegistry.RegisterSingleton<PrintInvoice.PrintInvoice>();
             containerRegistry.RegisterSingleton<ReceiptRentalContext>();
             containerRegistry.RegisterSingleton<ReceiptRental.ReceiptRentalSeedData.ReceiptRentalSeedData>();
-
-
-
         }
     }
 }

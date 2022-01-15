@@ -15,6 +15,14 @@
 
         public DbSet<PaymentTypes> PaymentTypes { get; set; }
 
+        public DbSet<Owner> Owner { get; set; }
+
+        public DbSet<Apartments> Apartments { get; set; }
+
+        public DbSet<Receipt> Receipt { get; set; }
+
+        public DbSet<Templates> Templates { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
         }
